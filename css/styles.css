@@ -1,0 +1,210 @@
+/*
+===================================================
+  CSS Scripts for Chinese Notebook 
+  2016, Stacy Bridges
+===================================================
+*/
+
+/* MEDIA QUERIES **********************************/
+@media(min-width: 768px){
+	#bannerTitle{ font-size:4.2em; }
+	.headers{ font-size:3em; }
+	.lessonText{ font-size:2.5em; }
+	.navMenu{ font-size:2.2em; }
+	#buttonPanel .dropdown-menu li{ font-size:2.1em; }	
+	.popover-title{ font-size:1.8em; } 
+	.popover-content{ font-size:1.4em; }	
+	.modal-header{ font-size:2.8em; }
+	.modal-body{ font-size:1.4em; }	
+	.fa-times-circle{ font-size:2em; }
+}
+@media(max-width: 767px) {
+	#bannerTitle{ font-size:3.7em; }	
+	.headers{ font-size:2.8em; }
+	.lessonText{ font-size:2.3em; }
+	.navMenu{ font-size:2.1em; }
+	#buttonPanel .dropdown-menu li{ font-size:2em; }	
+	.popover-title{ font-size:1.8em; } 
+	.popover-content{ font-size:1.3em; }	
+	.modal-header{ font-size:2.6em; }
+	.modal-body{ font-size:1.3em; }	
+	.fa-times-circle{ font-size:1.9em; }		
+}
+@media(max-width: 480px) {
+	#bannerTitle{ font-size:3.2em; }	
+	.headers{ font-size:2.5em; }
+	.lessonText{ font-size:2em; }
+	.navMenu{ font-size:2em; }
+	#buttonPanel .dropdown-menu li{ font-size:1.8em; }	
+	.popover-title{ font-size:1.7em; } 
+	.popover-content{ font-size:1.2em; }	
+	.modal-header{ font-size:2.4em; }
+	.modal-body{ font-size:1.2em; }	
+	.fa-times-circle{ font-size:1.8em; }		
+}
+
+
+/* BODY, PAGES & GENERAL **************************/
+html,
+body{ height:100%; margin:0 auto; padding:0px; }
+body{ color:rgb(120,120,120); overflow-y: scroll; }
+#wrapper{ min-height:100%; position:relative; }
+dt{ background-color:rgb(236,246,231); }
+dd{ margin-bottom:8px; margin-top:8px; }
+.headers{ margin-top:16px; padding:10px 0px 10px 0px; border-top:1px solid gray; border-bottom:1px solid gray; color:rgb(141,141,141); }
+.lessonText{ margin-top:22px; opacity: 0.9;}
+.leadInText{ text-align:center; margin-bottom:20px; }
+.dialogueDiv{ padding-bottom:100px; background:url('../images/bgBody.jpg') repeat; background-size:contain; }
+
+
+/* POPOVERS ***************************************/
+.def{ border-bottom: 2px dotted gray; margin:0px; }
+.def:hover{ cursor:pointer; }
+/*abbr[title]{ border-bottom: 2px dotted gray; }*/
+.popover-title{ text-align:center; font-weight:bold; } 
+.popover-content{ text-align:center; }
+.noWrap{ white-space:nowrap; }
+
+
+/* NAVIGATION MENU ********************************/
+.navMenu{ border-top:1px solid gray; border-bottom:1px solid gray; background-color:rgb(223,240,216); }
+.nav{ border:0px; margin-bottom:-9px;}
+.nav-tabs li{ margin-bottom: -1px; }
+.nav-tabs li a{ border-radius: 0px; border:0px; }
+.dropdown-toggle{ border:0px; } 
+#buttonPanel .dropdown-menu{ padding:0px; margin-top:1.5px; }
+#buttonPanel a{ color:gray; margin:0px;	}
+#buttonPanel a:hover{ background-color:rgb(240,240,240); cursor:pointer; }
+#buttonPanel a:active{ background-color:rgb(223,240,216); }
+
+
+/* #BANNER, .TOP, FOOTER **************************/
+#banner{
+	background-image:url('../images/banner3.png');
+	background-size:cover;
+	padding:10px 0px 10px 0px;
+}
+#bannerTitle{
+	color:rgb(161,161,161);
+	font-weight:bolder;
+}
+.fa-arrow-circle-up{
+	font-size: 4em;
+	color: rgb(196,216,211);
+	margin-bottom: 18px;
+	background-color: white;
+	border-radius:100px;
+}
+.fa-arrow-circle-up:hover{
+	color:rgb(170,200,195);
+	cursor:pointer;		
+}
+.fa-arrow-circle-up:active{
+	color:rgb(206,220,215);
+}
+footer{
+	background-color:rgb(223,240,216);
+	color:rgb(120,120,120);
+	text-align: center;
+	border-top: 1px solid gray;	
+	position:absolute;
+	height:100px;	
+	width:100%;
+	bottom:0;
+	left:0;
+}
+
+
+/* MODALS *****************************************/
+.modal-header{ background-color:rgb(223,240,216); border-bottom:1px solid green; }
+.modal-border-bottom{ background-color:rgb(223,240,216); border-top:1px solid green; margin:0px; padding:0px; }
+#specialThanks ul li{ padding-bottom: 10px; }
+#contactForm-submit{ padding:0px; }
+.btn-submit{ background-color: rgb(196,216,211); width:100%; font-weight:bold; font-size:1em; }
+.btn-submit:hover{ background-color:rgb(170,200,195); }
+.btn-submit:active{ background-color:rgb(206,220,215); }
+.btn-submit, 
+.btn-submit:hover, 
+.btn-submit:active, 
+.btn-submit:focus{ color:white; }
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline: none;
+  outline: 0px;
+}
+.close span{ position:relative; right:10px; top:8px; }
+.close span:hover{ color:rgb(170,200,195); }
+#name-field, 
+#email-field{ width:100%; height: 30px; }
+#message-field{ width:100%; height:100px; }
+
+
+/* AUDIO PLAYER ***********************************/
+#audioplayer{
+	display:inline-block;	
+	margin-top:10px;
+}
+.play{
+	width: 0; 
+	height: 0; 
+	margin-top:14px;
+	border-top: 15px solid transparent;
+	border-left: 28px solid rgb(196,216,211);
+	border-bottom: 15px solid transparent;
+	padding-right:6px;
+	float:left;
+}
+.play:hover{
+	border-left:28px solid rgb(170,200,195);
+	cursor:pointer;	
+}
+.play:active{
+	border-left: 28px solid rgb(206,220,215);	
+}
+.pause{
+	width:27px;
+	height:29px;
+	margin-top:15px;	
+	border-left:11px solid rgb(196,216,211);
+	border-right:11px solid rgb(196,216,211);	
+	float:left;
+	margin-right:7px;	
+}
+.pause:hover{
+	cursor:pointer;
+	border-left: 11px solid rgb(170,200,195);
+	border-right: 11px solid rgb(170,200,195);	
+}
+.pause:active{
+	border-left: 11px solid rgb(206,220,215);	
+	border-right: 11px solid rgb(206,220,215);	
+}
+#timeline{
+	height: 22px;
+	width:190px;	
+	background-color:rgb(230,236,228);
+	margin-top: 18px;
+	margin-right:2px;
+	float: left;
+	border-radius: 20px;
+	border:1px solid gray;
+}
+#playhead{
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	margin-top: 1px;
+	background: rgb(196,216,211);
+	border:1px solid gray;
+}
+#playhead:hover{
+	background:rgb(170,200,195);
+	cursor:pointer;
+}
+#playhead:active{
+	background:rgb(206,220,215);	
+}

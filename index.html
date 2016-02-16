@@ -1,0 +1,263 @@
+<!--
+===================================================
+  HTML Scripts for Chinese Notebook 
+  2016, Stacy Bridges
+===================================================
+-->
+
+<!-- rem: for HTMLMediaElement API see:
+     https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement-->
+
+<!doctype html>
+
+<html ng-app="myChinese">
+
+<head>
+    <meta charset="utf-8">
+    <title>Chinese Notebook | 中文笔记本</title>
+
+    <!-- META DATA -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="chinese notebook, stacy, bridges, javascript, bootstrap, angular, chinese, simplified, language, learn, beginner, audio, dialogue">
+    <meta name="description" content="Chinese Notebook is a language-learning app featuring eight original dialogues with simplified Chinese characters and TTS-based audio.">
+    <meta property="og:title" content="Chinese Notebook | 中文笔记本" />
+    <meta property="og:description" content="Chinese Notebook is a language-learning app featuring eight original dialogues with simplified Chinese characters and TTS-based audio." />
+
+    <!-- INCORPORATE CSS SCRIPTS & FAVICON -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/styles.css" rel="stylesheet"> 
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Firebase relies on a library that you include in your app. This library gives you easy access to Firebase's authentication and database features. -->
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+   
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="container-fluid" style="padding:0px;">
+
+            <!-- BANNER -->
+            <div class="text-center" id="banner">
+                <span id="bannerTitle"><span class="def noWrap" data-toggle="popover" title="中文笔记本" data-content="Zh&#333;ngw&#233;n  B&#464;j&#236;b&#283;n - Chinese Notebook" data-placement="bottom" data-trigger="click">中文笔记本</span></span>
+            </div><!-- end #banner -->
+
+            <!-- NAV MENU -->
+            <div class="navMenu text-center">
+               <div id="buttonPanel">
+                    <ul class="nav nav-tabs" style="display:inline-block;">
+
+                        <!-- SELECT LESSON -->
+                        <li class="dropdown">
+                          <a class="dropdown-toggle" href="" data-toggle="dropdown">课文<span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#/1" id="btnL1">问好</a></li>
+                            <li><a href="#/2" id="btnL2">家庭</a></li>
+                            <li><a href="#/3" id="btnL3">看朋友</a></li>
+                            <li><a href="#/4" id="btnL4">小吃</a></li>
+                          </ul>
+                        </li>
+
+                        <!-- SELECT DIALOGUE -->
+                        <li class="dropdown">
+                          <a class="dropdown-toggle" href="" data-toggle="dropdown">会话<span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="" id="btnD1" onclick="loadD1()">一</a></li>
+                            <li><a href="" id="btnD2" onclick="loadD2()">二</a></li>
+                          </ul>
+                        </li> 
+                    </ul> 
+                </div>  
+            </div><!-- end .navMenu -->
+
+            <!-- AUDIO PLAYER & LESSON DIALOGUES SECTION -->
+            <div class="container">
+                <div class="text-muted dialogueDiv">
+                    <div class="text-center">
+
+                        <!-- AUDIO PLAYER -->
+                        <div id="audioplayer">
+                            <audio id="music" preload="true">
+                                <source id="audioTrackOgg" src="audio/L1_D1.ogg" type="audio/ogg">                        
+                                <source id="audioTrackMp3" src="audio/L1_D1.mp3" type="audio/mpeg">
+                                <p>
+                                    <!-- fallback for non-supporting browsers --> 
+                                    Your browser does not support HTML5 audio, but you can still 
+                                    <a id="downloadTrack" href="audio/L1_D1.mp3">download the lesson track</a>. 
+                                </p>                 
+                            </audio>
+                            <div class="clearfix visible-xs"></div>
+                            <div id="audioControls">
+                                <div id="pButton" class="play" onclick="play()"></div>
+                                <div id="timeline">    
+                                    <div id="playhead"></div>
+                                </div>
+                            </div>
+                        </div><!-- end #audioPlayer -->
+                    </div>
+
+                    <!-- LESSON & DIALOGUE HEADERS -->
+                    <div class="headers text-muted text-center">
+                        <strong>
+                            <span id="lessonHeader">问好: </span>  
+                            <div class="clearfix visible-xs"></div>   
+                            <span id="dialogueHeader">第一会话</span>
+                        </strong>
+                    </div>
+
+                    <!-- VIEW -->
+                    <div>
+                        <div ng-view></div>
+                    </div>
+
+                    <div class="text-center up-arrow">
+                        <a href="#banner">
+                            <span>
+                                <i class="fa fa-arrow-circle-up"></i>
+                            </span>
+                        </a>
+                    </div>  
+                                       
+                </div>
+            </div>
+
+            <!-- MAIN PAGE FOOTER -->
+            <footer>
+                <br />
+                <!-- Button to trigger ABOUT modal -->
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#about" style="padding:0px;">
+                  About
+                </button>
+
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+
+                <!-- Button to trigger SPECIAL THANKS modal -->
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#specialThanks" style="padding:0px;">
+                  Thanks
+                </button>
+
+                <br/>
+                中文笔记本
+                <br/>                 
+                &copy; 2016, Stacy Bridges 
+                <br />
+            </footer> 
+
+            <!-- ABOUT MODAL -->
+            <div class="modal fade" id="about" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                            </div>
+                            <p class="modal-title text-center" class="myModalLabel"><span class="def noWrap" data-toggle="popover" title="谢谢" data-content="gu&#257;ny&#250; - about" data-placement="bottom" data-trigger="click"><strong>关于</strong></span></p>
+                        </div>
+                        <div class="modal-body text-left">
+                            <p>
+                                <br/>
+                                <b>Chinese Notebook</b> is a responsive web app meant to help beginning Chinese speakers to practice reading Chinese characters. 
+                                <br/><br/>
+                                Several elementary-level Chinese dialogues are included in this notebook. They are organized into thematic lessons, with two dialogues included per lesson. Each dialogue features an audio file to enhance the reading experience and to aid listening comprehension.
+                                <br/><br/>        
+                                Some characters in the notebook are <span class="def noWrap" data-toggle="popover" title="" data-content="underline example" data-placement="bottom" data-trigger="click">underlined</span> to indicate that a pop-over definition exists for them. You may open or close the pop-overs by clicking on the underlined characters.  
+                                <br/><br/>
+                                Thanks for visiting <b>Chinese Notebook</b>, and good luck studying Chinese! 
+                                <br/><br/>
+                            </p>
+                        </div>
+
+                        <div class="modal-border-bottom">
+                            <div class="text-center brand-footer">
+                                <br/>  
+                                <img src="images/favicon.ico" class="image-responsive" style="width:26px;"> 
+                                <br/><br/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end ABOUT modal -->
+
+            <!-- SPECIAL THANKS MODAL -->
+            <div class="modal fade" id="specialThanks" tabindex="-1" role="dialog">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                        </div>
+                        <p class="modal-title text-center" class="myModalLabel"><span class="def noWrap" data-toggle="popover" title="谢谢" data-content="xi&#232;xi&#232; - thankyou" data-placement="bottom" data-trigger="click"><strong>谢谢</strong></span>！</p>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            <br/>                              
+                            <b>Thanks</b> to the following folks whose tools and scripts helped to make this site possible:<br/><br/>
+                            <ul>
+                                <li><a href="http://convertico.com" target="_blank"><strong>convertico.com</strong></a> for their PNG-to-ICO conversion tool</li>
+                                <li><a href="http://www.oddcast.com/home/demos/tts/tts_example.php" target="_blank"><strong>oddcast.com</strong></a> for their TTS tools</li>
+                                <li><a href="https://translate.google.com" target="_blank"><strong>translate.google.com</strong></a> for their TTS tools</li>
+                                <li><a href="http://www.chinese-tools.com/tools/converter-pinyin-unicode.html" target="_blank"><strong>chinese-tools.com</strong></a> for their Pinyin tone converter</li>
+                                <li><a href="http://www.cssreset.com/demos/layouts/how-to-keep-footer-at-bottom-of-page-with-css/" target="_blank"><strong>cssreset.com</strong></a> for their footer anchoring scripts</li>  
+                                <li><a href="https://css-tricks.com/snippets/jquery/smooth-scrolling/" target="_blank"><strong>Chris Coyier</strong></a> for his smooth-scroll script at css-tricks.com</li>                                                      
+                                <li><a href="http://www.alexkatz.me" target="_blank"><strong>Alex Katz</strong></a> for his insightful audio-player scripts</li>
+                                <li><a href="http://untame.net/2013/05/how-to-build-a-modal-contact-form-in-twitter-bootstrap-with-php-ajax/" target="_blank"><strong>Michael Milstead</strong></a> for his article on modal contact forms</li>
+                                <li><a href="http://www.hanzireader.com/hanzireader/Home.html" target="_blank"><strong>Robert Phillips</strong></a> for his inspiring HanZi Reader app for iPad</li>                                
+                            </ul>
+                            . . . and warmest thanks to <strong>Xing Chen</strong>, 世界上最伟大的老师, for getting me started. 
+                            <br/><br/>           
+                        </p>
+                    </div>
+                    <div class="modal-border-bottom">
+                        <div class="text-center brand-footer">
+                            <br/>  
+                            <img src="images/favicon.ico" class="image-responsive" style="width:26px;"> 
+                            <br/><br/>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div><!-- end SPECIAL THANKS modal -->
+        </div><!-- end .container-fluid -->
+    </div><!-- end #wrapper -->
+
+    <!-- INCORPORATE JS SCRIPTS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="//code.angularjs.org/1.4.0-rc.1/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.4.0-rc.1/angular-route.min.js"></script>  
+    <script src="js/jQueryScripts.js"></script>     
+    <script src="js/apps.js"></script> 
+    <script src="js/chineseApp.js"></script> 
+
+    <!-- INCORPORATE JQUERY/AJAX FOR THE CONTACT FORM -->
+    <script>
+        $(document).ready(function(){
+            $("#submit").click(function(){
+                $.ajax({
+                    type: "POST",
+                    url: "contact.php", //process to mail
+                    data: $('form.contact').serialize(),
+                    success: function(data){
+                        // swap contactForm content for confirmation content
+                        $("#contactForm-title").hide();
+                        $('#confirmation-title').show(); 
+                        $("#contactForm-body").hide();
+                        $('#confirmation-body').show();
+                        $('#confirmation-body').html(data);
+                        $('#contactForm-submit').hide(); 
+                        $('#confirmation-submit').show();
+                        // enable the popover for the updated title
+                        $('[data-toggle = "popover"]').popover(); 
+                    },
+                    error: function(){
+                        alert("failure");
+                    }
+                });
+            });
+        });
+    </script> 
+
+</body>
+</html>
