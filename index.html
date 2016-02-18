@@ -138,6 +138,13 @@
                   Thanks
                 </button>
 
+                <!-- Button to trigger CONTACT FORM modal 
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#contactForm" style="padding:0px;">
+                  Contact
+                </button>                  
+                -->
+                
                 <br/>
                 中文笔记本
                 <br/>                 
@@ -172,7 +179,7 @@
                         <div class="modal-border-bottom">
                             <div class="text-center brand-footer">
                                 <br/>  
-                                <img src="images/favicon.ico" class="image-responsive" style="width:26px;"> 
+                                <img src="images/favicon.ico" class="image-responsive" style="width:30px;"> 
                                 <br/><br/>
                             </div>
                         </div>
@@ -195,11 +202,15 @@
                             <br/>                              
                             <b>Thanks</b> to the following folks whose tools and scripts helped to make this site possible:<br/><br/>
                             <ul>
-                                <li><a href="http://convertico.com" target="_blank"><strong>convertico.com</strong></a> for their PNG-to-ICO conversion tool</li>
-                                <li><a href="http://www.oddcast.com/home/demos/tts/tts_example.php" target="_blank"><strong>oddcast.com</strong></a> for their TTS tools</li>
-                                <li><a href="https://translate.google.com" target="_blank"><strong>translate.google.com</strong></a> for their TTS tools</li>
-                                <li><a href="http://www.chinese-tools.com/tools/converter-pinyin-unicode.html" target="_blank"><strong>chinese-tools.com</strong></a> for their Pinyin tone converter</li>
-                                <li><a href="http://www.cssreset.com/demos/layouts/how-to-keep-footer-at-bottom-of-page-with-css/" target="_blank"><strong>cssreset.com</strong></a> for their footer anchoring scripts</li>  
+                                <li><a href="http://convertico.com" target="_blank"><strong>ConvertICO</strong></a> for their PNG-to-ICO conversion tool</li>
+                                <li><a href="http://www.oddcast.com/home/demos/tts/tts_example.php" target="_blank"><strong>Oddcast</strong></a> for their TTS tools</li>
+                                <li><a href="https://translate.google.com" target="_blank"><strong>Google Translate</strong></a> for their TTS tools</li>
+                                <li><a href="http://www.chinese-tools.com/tools/converter-pinyin-unicode.html" target="_blank"><strong>Chinese-Tools</strong></a> for their Pinyin tone converter</li>
+                                <li><a href="http://www.cssreset.com/demos/layouts/how-to-keep-footer-at-bottom-of-page-with-css/" target="_blank"><strong>CSS Reset</strong></a> for their footer anchoring scripts</li>  
+
+                                <li><a href="http://www.hamstersoft.com/free-audio-converter/" target="_blank"><strong>HAMSTERsoft</strong></a> for their universal audio converter</li>  
+                                <li><a href="http://www.audacityteam.org/" target="_blank"><strong>Audacity</strong></a> for their open source recording software</li>  
+                                <li><a href="http://auriaapp.com/" target="_blank"><strong>WaveMachine Labs</strong></a> for their Auria Digital Audio Workstation for iPad</li>                                                                  
                                 <li><a href="https://css-tricks.com/snippets/jquery/smooth-scrolling/" target="_blank"><strong>Chris Coyier</strong></a> for his smooth-scroll script at css-tricks.com</li>                                                      
                                 <li><a href="http://www.alexkatz.me" target="_blank"><strong>Alex Katz</strong></a> for his insightful audio-player scripts</li>
                                 <li><a href="http://untame.net/2013/05/how-to-build-a-modal-contact-form-in-twitter-bootstrap-with-php-ajax/" target="_blank"><strong>Michael Milstead</strong></a> for his article on modal contact forms</li>
@@ -212,13 +223,77 @@
                     <div class="modal-border-bottom">
                         <div class="text-center brand-footer">
                             <br/>  
-                            <img src="images/favicon.ico" class="image-responsive" style="width:26px;"> 
+                            <img src="images/favicon.ico" class="image-responsive" style="width:30px;"> 
                             <br/><br/>
                         </div>
                     </div>
                 </div>
               </div>
             </div><!-- end SPECIAL THANKS modal -->
+
+            <!-- CONTACT FORM MODAL -->
+            <div class="modal fade" id="contactForm" tabindex="-1" role="dialog">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <!-- MODAL HEADER ************************************-->
+                    <div class="modal-header">
+                        <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" id="contactForm-close"><i class="fa fa-times-circle"></i></span>
+                        </div>
+
+                        <!-- use jQuery to show #contactForm-title by default -->
+                        <p id="contactForm-title" class="modal-title text-center" class="myModalLabel"><span class="def noWrap" data-toggle="popover" title="写给我" data-content="xi&#283; g&#283;i w&#466; - write to me" data-placement="bottom" data-trigger="click"><strong>写给我</strong></span>！</p>
+
+                        <!-- use jQuery to show #confirmation-title upon form submit -->
+                        <p id="confirmation-title" class="modal-title text-center" class="myModalLabel"><span class="def noWrap" data-toggle="popover" title="谢谢" data-content="xi&#232;xi&#232; - thankyou" data-placement="bottom" data-trigger="click"><strong>谢谢</strong></span>！</p>    
+                    </div><!-- end modal header -->
+
+                    <!-- MODAL BODY **************************************-->
+                    <div class="modal-body">
+                        <!-- use jQuery to show #contactForm-body by default -->
+                        <div id="contactForm-body">
+                            <p>
+                                Please write your comments and suggestions. Thanks for visiting! 
+                                <form id="form" class="contact" name="contact">
+                                    <label class="label" for="name"></label><br>
+                                    <input id="name-field" class="contact-field" type="text" name="name" placeholder="name （名字）" style="padding:0px 10px 0px 10px;background-color:#F2FAF6;"><br>
+                                    <label class="label" for="email"></label><br>
+                                    <input id="email-field" class="contact-field" type="email" name="email" placeholder="email （电子邮件）" style="padding:0px 10px 0px 10px;background-color:#F2FAF6;"><br>
+                                    <label class="label" for="message"></label><br>
+                                    <textarea id="message-field" class="contact-field" name="message" placeholder="message （信息）" style="padding:0px 10px 0px 10px;background-color:#F2FAF6;"></textarea>
+                                </form>                     
+                            </p>
+                            <br/>
+                        </div>
+
+                        <!-- use jQuery to show #confirmation-body upon form submit -->
+                        <div id="confirmation-body">
+                            <p></p>
+                        </div>
+
+                        <!-- MODAL SEND BUTTON ***************************-->
+                        <div>
+                            <!-- use jQuery to show #contactForm-footer by default -->
+                            <div id="contactForm-submit" class="modal-footer">
+                                <input class="btn btn-submit" type="submit" value="SEND" id="submit">
+                            </div>   
+
+                            <!-- use jQuery to show #confirmation-footer upon form submit -->
+                            <div id="confirmation-submit" class="modal-footer">
+                                <p></p>
+                            </div>   
+                        </div><!-- end modal footer -->                        
+                    </div><!-- end modal body -->
+                    <div class="text-center brand-footer">
+                        <br/>                        
+                        <img src="images/favicon.ico" class="image-responsive" style="width:26px;"> 
+                        <br/><br/>
+                    </div>                    
+                    <div class="modal-border-bottom"></div>
+                </div><!-- end modal content -->
+              </div><!-- end modal dialog -->
+            </div><!-- end CONTACT FORM modal -->
+
         </div><!-- end .container-fluid -->
     </div><!-- end #wrapper -->
 
