@@ -1,7 +1,7 @@
 /*
 ===================================================
   AngularJS Scripts for Chinese Notebook 
-  2016, Stacy Bridges
+  2016, 2017, 2018 Stacy Bridges
 ===================================================
 */
 // Angular.JS
